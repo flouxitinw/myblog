@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { useAuthStore } from '../stores/auth.js';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -7,6 +8,16 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('../views/HomeView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/RegisterView.vue')
     },
     {
       path: '/article/:slug',
@@ -19,11 +30,26 @@ const router = createRouter({
       name: 'tag',
       component: () => import('../views/TagView.vue'),
       props: true
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardView.vue'),
+      meta: { requiresAuthor: true }
     }
   ],
   scrollBehavior() {
     return { top: 0 };
   }
+});
+
+router.beforeEach((to, from, next) => {
+  const auth = useAuthStore();
+  if (to.meta?.requiresAuthor && !auth.isAuthor) {
+    next({ name: 'login', query: { redirect: to.fullPath } });
+    return;
+  }
+  next();
 });
 
 export default router;
