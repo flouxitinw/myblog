@@ -25,7 +25,7 @@
           <RouterLink
             v-if="auth.isAuthor"
             to="/dashboard"
-            class="hidden rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-xs font-medium text-primary transition hover:bg-primary/15 sm:inline-flex"
+            class="inline-flex rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-xs font-medium text-primary transition hover:bg-primary/15"
           >
             作者后台
           </RouterLink>

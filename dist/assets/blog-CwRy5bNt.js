@@ -1,4 +1,4 @@
-import{y as C}from"./index-rxHqB111.js";const D=`# Vue3 + Tailwind 打造移动端体验的心得\r
+import{y as C}from"./index-K87GO5ZW.js";const D=`# Vue3 + Tailwind 打造移动端体验的心得\r
 \r
 > “设计不是堆砌，而是精简到只剩必要。”\r
 \r
